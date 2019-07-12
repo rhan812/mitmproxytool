@@ -1,0 +1,4 @@
+
+- urlpath: /installment/login # 规则URL
+  ruleName: intercept_status_code   # 规则名
+  ruleValue: 404   # 规则设置值
