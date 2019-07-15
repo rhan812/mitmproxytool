@@ -1,4 +1,20 @@
+# 全局过滤器 , 可以无 , and = & , or =|  , 组合 (...)
 
-- urlpath: /installment/login # 规则URL
-  ruleName: intercept_status_code   # 规则名
-  ruleValue: 404   # 规则设置值
+filter: "~d 192.168.21.26"
+# redirect: "t.jufandev.com:8021"  # 配置重定向URL, 类似与 mock 开关， 配置了则 满足filter的 重定向到配置的 url， 重定向后 规则集失效
+# 规则集
+rules:
+#    - urlpath: /installment/login # 规则URL
+#      ruleName: intercept_status_code   # 规则名
+#      ruleValue: 404   # 规则设置值  可以：为 json 文件
+#      filter: "~m get"
+
+#    - urlpath: /installment/login # 规则URL
+#      ruleName: intercept_response_part   # 部分值修改
+#      ruleValue: example.json   # 规则设置值 为 json 文件
+
+    - urlpath: /installment/login # 规则URL
+      ruleName: intercept_response_part   # 部分值修改
+      # 1. 设置值为具体的某个值 或者多个 值的格式。若有多层嵌套 例如：{"a":{"b":[{"c":1},{"c":2}]}} 设置方式 $.a.b.[0].c
+      # 2. 删除返回体中的某个 key
+      ruleValue: {"code": "500", "DEL.errorcode": "", "DEL.message": ""}

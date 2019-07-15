@@ -6,6 +6,7 @@
 1、安装Python 3
 2、安装 pip
 3、pip install requirements.txt
+4、若报错： 手动安装 需要的 第三方包
 
 使用说明：
 1. 设置代理:
@@ -15,9 +16,33 @@
     默认端口: 8080
 
 2. 修改配置文件:
+    filter: 过滤规则
+    redirect:  配置重定向URL, 配置了且 满足filter 重定向到配置的 url， 重定向后 规则集失效
+
     urlpath: 需要拦截请求path
     ruleName: 规则名称
-    ruleValue: 规则值
+    ruleValue: 规则值 可以支持 str , dict, 文件(json 文件)
+               # 1. 设置值为具体的某个值 或者多个 值的格式。若有多层嵌套 例如：{"a":{"b":[{"c":1},{"c":2}]}}
+               设置方式 $.a.b.[0].c
+               # 2. 删除返回体中的某个 key
+    filter: 规则中的过滤
+
+    过滤规则：
+
+    {
+        "Request body": "~rb",
+        "Response body": "~bs",
+        "HTTP response code": "~c",
+        "Domain": "~d",
+        "Request header": "~hq",
+        "Response header": "~hs",
+        "Match HTTP flows": "~http",
+        "URL": "~u",
+        "Match destination address": "~dst",
+    }
+    具体: https://docs.mitmproxy.org/stable/concepts-filters/
+    书写方法:
+    ~d value & (~u value | ~d value)
 
     规则名包含：
      intercept_response_all: 篡改全部返回值
@@ -27,14 +52,11 @@
      intercept_status_code: 篡改返回状态码
 
 3. 开启代理工具:
-    mitmdump -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py --set rulepath=xxxx/xxx/xx.yaml(没有gui模式)
-    mitmweb -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py --set rulepath=xxxx/xxx/xx.yaml(启动web页面模式)
-
-    mitmdump  -set sendfromproxy={}  # 不从远程服务获取数据直接从代理
+    mitmdump -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py xxxx/xxx/xx.yaml(没有gui模式)
+    mitmweb -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py xxxx/xxx/xx.yaml(启动web页面模式)
 
     注：以上命令需要切换至 proxyserver.py文件所在目录
 
 4. TO DO:
-    1. 篡改指定的值。
-    2. 添加更多的功能。(可提需求)
-    3. 重定向请求.(可定制，指定host 或者 完整的 url 进行重定向)
+    1. 拦截的请求相关信息 保存至文件
+    2. locust 调用 拦截的请求进行性能测试
