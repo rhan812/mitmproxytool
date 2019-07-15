@@ -78,8 +78,6 @@
 =======
 >     mitmdump -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py --set rulepath=xxxx/xxx/xx.yaml(没有gui模式)
 >     mitmweb -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py --set rulepath=xxxx/xxx/xx.yaml(启动web页面模式)
->>>>>>> 20a447c7e83f4dedce9932eca4bf7809b7a80df6
->     mitmdump  -set sendfromproxy={}  # 不从远程服务获取数据直接从代理
 
 **TO DO:**
 ----------
