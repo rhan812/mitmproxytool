@@ -26,7 +26,6 @@
 
  2. 规则配置文件:
 
-<<<<<<< HEAD
 >     filter: 过滤规则
 >     redirect:  配置重定向URL, 配置了且 满足filter 重定向到配置的 url， 重定向后 规则集失效
 >     urlpath: 需要拦截请求path
@@ -66,7 +65,6 @@
 
     ** 规则名包含：**
 
->>>>>>> 20a447c7e83f4dedce9932eca4bf7809b7a80df6
 >      intercept_response_all: 篡改全部返回值
 >      intercept_response_part: 篡改部分返回值
 >      not_intercept: 原值返回
@@ -75,7 +73,6 @@
 
  3. 开启代理工具:
 
-<<<<<<< HEAD
 >     mitmdump -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py xxxx/xxx/xx.yaml(没有gui模式)
 >     mitmweb -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py xxxx/xxx/xx.yaml(启动web页面模式)
 =======
@@ -87,7 +84,6 @@
 **TO DO:**
 ----------
 
-<<<<<<< HEAD
 >     1. 拦截的请求相关信息 保存至文件
 >     2. locust 调用 拦截的请求进行性能测试
 
