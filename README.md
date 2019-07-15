@@ -57,11 +57,6 @@
 >     书写方法:
 >     ~d value & (~u value | ~d value)
 >
->     规则名包含：
-=======
->     - urlpath: 需要拦截请求path
->     - ruleName: 规则名称
->     - ruleValue: 规则值
 
     ** 规则名包含：**
 
@@ -75,9 +70,7 @@
 
 >     mitmdump -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py xxxx/xxx/xx.yaml(没有gui模式)
 >     mitmweb -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py xxxx/xxx/xx.yaml(启动web页面模式)
-=======
->     mitmdump -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py --set rulepath=xxxx/xxx/xx.yaml(没有gui模式)
->     mitmweb -s proxyserver.py  或者  mitmdump -s xx/xx/proxyserver.py --set rulepath=xxxx/xxx/xx.yaml(启动web页面模式)
+
 
 **TO DO:**
 ----------
